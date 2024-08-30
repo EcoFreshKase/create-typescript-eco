@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "A script to easily setup a typescript project with the preferences of Eco_Fresh_Kaese",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EcoFreshKase/create-typescript-eco"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
