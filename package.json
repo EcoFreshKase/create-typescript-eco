@@ -2,18 +2,25 @@
   "name": "create-typescript-eco",
   "version": "1.0.6",
   "description": "A script to easily setup a typescript project with the preferences of Eco_Fresh_Kaese",
-  "main": "./bin/index.js",
+  "main": "cli.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/EcoFreshKase/create-typescript-eco"
+    "url": "git+https://github.com/EcoFreshKase/create-typescript-eco.git"
   },
   "bin": {
-    "create-typescript-eco": "./bin/index.js"
+    "create-typescript-eco": "cli.js"
   },
   "scripts": {
     "test": "npx ./",
-    "bin": "node ./bin/index.js"
+    "bin": "node ./cli.js"
   },
   "author": "Eco_Fresh_Kaese",
-  "license": "ISC"
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EcoFreshKase/create-typescript-eco/issues"
+  },
+  "homepage": "https://github.com/EcoFreshKase/create-typescript-eco#readme",
+  "directories": {
+    "lib": "lib"
+  }
 }
