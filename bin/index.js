@@ -1,3 +1,2 @@
-import { bin } from "../lib/index.js";
-
-console.log(bin());
+#!/usr/bin/env node
+console.log("Hello, World!");
