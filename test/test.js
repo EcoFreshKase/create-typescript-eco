@@ -2,33 +2,41 @@
 const { exec } = require("../lib/fileExecutionUtil.js");
 const readline = require("node:readline");
 const fs = require("fs");
+const path = require("path");
 
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
-const prevDirContents = fs.readdirSync(__dirname);
-console.log(prevDirContents);
 
-// Execute script
-exec(`npx ./`);
+(async () => {
+  const prevDirContents = fs.readdirSync(__dirname);
 
-// Wait until user finishes
-rl.question(`Press any key to exit`, () => {
-  rl.close();
-});
+  // Execute script
+  exec(`npx ./`);
 
-// Delete all new files
-const newFiles = fs.readdirSync(__dirname);
-for (const file of newFiles) {
-  if (prevDirContents.includes(file)) {
-    continue;
+  // Wait until user finishes
+  await getUserInput();
+
+  // Delete all new files
+  const newFiles = fs.readdirSync(__dirname);
+  console.log(`New files: ${newFiles} ; Previous files: ${prevDirContents}`);
+  for (const file of newFiles) {
+    if (prevDirContents.includes(file)) {
+      continue;
+    }
+
+    console.log("deleting", file);
+    const filePath = path.join(__dirname, file);
+    fs.rmSync(filePath, { recursive: true });
   }
+})();
 
-  const filePath = path.join(__dirname, file);
-  if (fs.lstatSync(filePath).isDirectory()) {
-    fs.rmdirSync(filePath, { recursive: true });
-  } else {
-    fs.unlinkSync(filePath);
-  }
+function getUserInput() {
+  return new Promise((resolve) => {
+    rl.question(`Press any key to exit`, () => {
+      rl.close();
+      resolve();
+    });
+  });
 }

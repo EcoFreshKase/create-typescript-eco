@@ -11,7 +11,7 @@
     "create-typescript-eco": "cli.js"
   },
   "scripts": {
-    "test": "npx ./",
+    "test": "node ./test/test.js",
     "bin": "node ./cli.js"
   },
   "author": "Eco_Fresh_Kaese",
